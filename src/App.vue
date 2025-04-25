@@ -61,14 +61,14 @@
     <section class="banner">
       <div class="divLadoALado">
        <div class="lado1">
-        <p>Autor de Abril</p>
+        <p class="autor">Autor de Abril</p>
         <h1>Eric-Emanuel Schmitt </h1>
-        <p>Eric-Emmanuel Schmitt has been awarded more than 20 literary prizes and distinctions, and in 2001 he received the title of Chevalier des Arts et des Lettres. His books have been translated into over 40 languages.</p>
+        <p class="texto">Eric-Emmanuel Schmitt has been awarded more than 20 literary prizes and distinctions, and in 2001 he received the title of Chevalier des Arts et des Lettres. His books have been translated into over 40 languages.</p>
         <button>Acessar página do livro</button>
        </div>
        <div class="lado2">
         <img src="../public/img/livro.png" alt="Capa do Livro">
-        <p>*within the stock limit</p>
+        <p class="descricao">*within the stock limit</p>
        </div>
       </div>
 
@@ -144,5 +144,62 @@
   header nav div.IFbooks ul li p.espaco{
     border-left: 1.5px solid #27AE60;
     padding: 0 0 0 12px;
+  }
+
+  /*ALINHAMENTO BANNER*/
+
+  section.banner div.divLadoALado  {
+    display: flex;
+  }
+
+  /*ESPAÇAMENTO BANNER*/
+
+  section.banner div.divLadoALado div.lado1 p.autor {
+    margin: 9.5vw 37vw 2.5vw 11vw ;
+  }
+  section.banner div.divLadoALado div.lado1 h1 {
+    margin: 0 0 3vw 11vw ;
+  }
+  section.banner div.divLadoALado div.lado1 p.texto {
+    margin: 0 7vw 4vw 11vw ;
+  }
+  section.banner div.divLadoALado div.lado1 button {
+    margin: 0 15vw 4vw 11vw ;
+  }
+  section.banner div.divLadoALado div.lado2 img{
+    margin: 2vw 8vw 0 0;
+  }
+  section.banner div.divLadoALado div.lado2 p.descricao{
+    margin: 0 3vw 0 20vw;
+  }
+
+  /*ESTILIZAÇÃO BANNER*/
+
+  section.banner div.divLadoALado div.lado1 p.autor {
+    border:1px solid #27AE60 ;
+    background-color: white;
+    padding: 12px 11px 12px 12px;
+    border-radius: 3px;
+    color: #27AE60;
+    font-size: 14px;
+  }
+  section.banner div.divLadoALado div.lado1 h1 {
+    font-size: 43px;
+    font-weight: bold;
+  }
+  section.banner div.divLadoALado div.lado1 p.texto {
+    line-height: 24px;
+    color: #4D4C4C;
+  }
+  section.banner div.divLadoALado div.lado1 button{
+    background-color: #27AE60;
+    padding: 12.02px 32.04px 12.02px 32.04px;
+    color: white;
+    border: none;
+    border-radius: 1px;  
+    font-size: 16.02px;
+  }
+  section.banner div.divLadoALado div.lado2 p.descricao{
+    font-size: 16px;
   }
 </style>
