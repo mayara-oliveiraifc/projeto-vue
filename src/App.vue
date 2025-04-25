@@ -73,21 +73,20 @@
       </div>
     </section>
     <section class="menuFrete">
-      <ul>
-        <li>
-          <span class="fa-solid fa-truck"></span>
-          <p>Frete grátis para SC</p>
-        </li>
-        <li>
-          <span class="fa-solid fa-star"></span>
-          <p>Livros recomendados</p>
-        </li>
-        <li>
-          <span class="fa-solid fa-book-open"></span>
-          <p>Mais vendidos</p>
-        </li>
-      </ul>
-
+    <div class="menuMeio">
+      <div class="frete">
+        <p><span class="fa-solid fa-truck"></span></p>
+        <p>Frete grátis para SC</p>
+        </div>
+     <div class="livros">
+      <p><span class="fa-solid fa-star"></span></p>
+      <p>Livros recomendados</p>
+    </div>
+    <div class="maisVendidos">
+      <p><span class="fa-solid fa-book-open"></span></p>
+      <p>Mais vendidos</p>
+    </div>
+    </div>
     </section>
   </main>
 </template>
@@ -217,5 +216,10 @@
   }
   section.banner div.divLadoALado div.lado2 p.descricao{
     font-size: 16px;
+  }
+  /*ALINHAMEgitNTO MENU FRETE*/
+
+  section.menuFrete div.menuMeio {
+    display: flex;
   }
 </style>
