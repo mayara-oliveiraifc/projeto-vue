@@ -57,7 +57,23 @@
       </div>
     </nav>
   </header>
+  <main>
+    <section class="banner">
+      <div class="divLadoALado">
+       <div class="lado1">
+        <p>Autor de Abril</p>
+        <h1>Eric-Emanuel Schmitt </h1>
+        <p>Eric-Emmanuel Schmitt has been awarded more than 20 literary prizes and distinctions, and in 2001 he received the title of Chevalier des Arts et des Lettres. His books have been translated into over 40 languages.</p>
+        <button>Acessar página do livro</button>
+       </div>
+       <div class="lado2">
+        <img src="../public/img/livro.png" alt="Capa do Livro">
+        <p>*within the stock limit</p>
+       </div>
+      </div>
 
+    </section>
+  </main>
 </template>
 
 <style scoped>
