@@ -71,6 +71,22 @@
         <p class="descricao">*within the stock limit</p>
        </div>
       </div>
+    </section>
+    <section class="menuFrete">
+      <ul>
+        <li>
+          <span class="fa-solid fa-truck"></span>
+          <p>Frete grátis para SC</p>
+        </li>
+        <li>
+          <span class="fa-solid fa-star"></span>
+          <p>Livros recomendados</p>
+        </li>
+        <li>
+          <span class="fa-solid fa-book-open"></span>
+          <p>Mais vendidos</p>
+        </li>
+      </ul>
 
     </section>
   </main>
