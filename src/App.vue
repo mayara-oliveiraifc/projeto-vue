@@ -74,19 +74,22 @@
     </section>
     <section class="menuFrete">
     <div class="menuMeio">
-      <div class="frete">
-        <p><span class="fa-solid fa-truck"></span></p>
-        <p>Frete grátis para SC</p>
-        </div>
-     <div class="livros">
-      <p><span class="fa-solid fa-star"></span></p>
-      <p>Livros recomendados</p>
+      <ul>
+        <li>
+          <p><span class="fa-solid fa-truck"></span></p>
+          <p>Frete grátis para SC</p>
+        </li>
+        <li class="barrasMenuFrete">
+          <p><span class="fa-solid fa-star"></span></p>
+          <p>Livros recomendados</p>
+        </li>
+        <li>
+          <p><span class="fa-solid fa-book-open"></span></p>
+          <p class="sublinhado">Mais vendidos</p>
+        </li>
+      </ul>
     </div>
-    <div class="maisVendidos">
-      <p><span class="fa-solid fa-book-open"></span></p>
-      <p>Mais vendidos</p>
-    </div>
-    </div>
+
     </section>
   </main>
 </template>
@@ -94,6 +97,9 @@
 <style scoped>
 
   /*ALINHAMENTO MENU*/
+  header{
+    margin:3vw 10vw; 
+  }
   header nav {
     display: flex;
   }
@@ -191,6 +197,7 @@
   /*ESTILIZAÇÃO BANNER*/
 
   section.banner div.divLadoALado div.lado1 p.autor {
+    display: block;
     border:1px solid #27AE60 ;
     background-color: white;
     padding: 12px 11px 12px 12px;
@@ -203,8 +210,11 @@
     font-weight: bold;
   }
   section.banner div.divLadoALado div.lado1 p.texto {
+    display: block;
+    text-align: left;
     line-height: 24px;
     color: #4D4C4C;
+    font-size: 16px;
   }
   section.banner div.divLadoALado div.lado1 button{
     background-color: #27AE60;
@@ -217,9 +227,50 @@
   section.banner div.divLadoALado div.lado2 p.descricao{
     font-size: 16px;
   }
-  /*ALINHAMEgitNTO MENU FRETE*/
+  /*ALINHAMENTO MENU FRETE*/
 
-  section.menuFrete div.menuMeio {
+  section.menuFrete ul{
     display: flex;
   }
+
+  section.menuFrete ul li{
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  /*ESPAÇAMENTO MENU FRETE*/
+
+  section.menuFrete {
+    margin: 0 10vw 0 10vw;
+    justify-content: space-between;
+    border-top:1px solid #27AE60 ;
+    padding: 30px
+  }
+
+  section.menuFrete ul li p{
+    margin: 0 1vw;
+  }
+  section.menuFrete ul li{
+    margin: 0 2vw;
+  }
+
+  /*ESTILIZAÇÃO MENU FRETRE*/
+
+  section.menuFrete ul li p{
+    font-size: 24px;
+  }
+  section.menuFrete ul li.barrasMenuFrete{
+    border-right: 1px solid #937DC2;
+    padding: 0 3vw;
+    border-left: 1px solid #937DC2;
+
+  }
+  section.menuFrete ul li p.sublinhado{
+    border-bottom: 1px solid #231F2D;
+    padding: 0 3vw 0 0;
+  }
+
+
+
 </style>
