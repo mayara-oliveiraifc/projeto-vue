@@ -1,5 +1,62 @@
 <script setup>
-
+const produtos = [
+    {
+        id: 1,
+        titulo: 'Livro 1',
+        resenha: 'Descrição breve 1',
+        preco: 49.9,
+        capa: 'https://placehold.co/600x400.png',
+    },
+    {
+        id: 2,
+        titulo: 'Livro 2',
+        resenha: 'Descrição breve 2',
+        preco: 99.9,
+        capa: 'https://placehold.co/600x400.png',
+    },
+    {
+        id: 3,
+        titulo: 'Livro 3',
+        resenha: 'Descrição breve 3',
+        preco: 9.9,
+        capa: 'https://placehold.co/600x400.png',
+    },
+    {
+        id: 4,
+        titulo: 'Livro 4',
+        resenha: 'Descrição breve 4',
+        preco: 199.9,
+        capa: 'https://placehold.co/600x400.png',
+    },
+    {
+        id: 5,
+        titulo: 'Livro 5',
+        resenha: 'Descrição breve 5',
+        preco: 29.9,
+        capa: 'https://placehold.co/600x400.png',
+    }
+  ];
+    const carrinho = {
+    items: [
+        {
+            id: 1,
+            nome: 'Livro 1',
+            preco: 49.9,
+            quantidade: 1,
+            valorTotal: 49.9,
+            },
+        {
+            id: 2,
+            nome: 'Livro 2',
+            preco: 99.9,
+            quantidade: 2,
+            valorTotal: 199.8,
+        },
+    ],
+    frete: 0,
+    desconto: 0,
+    total: 288.3,
+};
 
 </script>
 
@@ -63,7 +120,7 @@
        <div class="lado1">
         <p class="autor">Autor de Abril</p>
         <h1>Eric-Emanuel Schmitt </h1>
-        <p class="texto">Eric-Emmanuel Schmitt has been awarded more than 20 literary prizes and distinctions, and in 2001 he received the title of Chevalier des Arts et des Lettres. His books have been translated into over 40 languages.</p>
+        <p class="texto">Eric-Emmanuel Schmitt has been awarded more than 20 literary prizes and distinctions, and in 2001 he received the  title of Chevalier des Arts et des Lettres. His books have been  translated into over 40 languages.</p>
         <button>Acessar página do livro</button>
        </div>
        <div class="lado2">
@@ -89,7 +146,6 @@
         </li>
       </ul>
     </div>
-
     </section>
   </main>
 </template>
@@ -171,62 +227,94 @@
 
   section.banner div.divLadoALado  {
     display: flex;
+    justify-content: space-between;
+    margin: 0 10vw;
+  }
+  section.banner div.divLadoALado div.lado1{
+    margin: 0 10vw 0 10vw;
   }
 
-  /*ESPAÇAMENTO BANNER*/
-
-  section.banner div.divLadoALado div.lado1 p.autor {
-    margin: 9.5vw 37vw 2.5vw 11vw ;
+  section.banner div.divLadoALado div.lado1 p.texto{
+    margin: 2vw 0 ;
   }
-  section.banner div.divLadoALado div.lado1 h1 {
-    margin: 0 0 3vw 11vw ;
+  section.banner div.divLadoALado div.lado1 p.autor{
+    margin: 5vw 0 2vw 0;
   }
-  section.banner div.divLadoALado div.lado1 p.texto {
-    margin: 0 7vw 4vw 11vw ;
-  }
-  section.banner div.divLadoALado div.lado1 button {
-    margin: 0 15vw 4vw 11vw ;
-  }
-  section.banner div.divLadoALado div.lado2 img{
-    margin: 2vw 8vw 0 0;
+  section.banner div.divLadoALado div.lado2{
+    margin: 0 8vw 0 0;
   }
   section.banner div.divLadoALado div.lado2 p.descricao{
-    margin: 0 3vw 0 20vw;
+    margin: 0 0 2vw 10vw
   }
-
   /*ESTILIZAÇÃO BANNER*/
 
-  section.banner div.divLadoALado div.lado1 p.autor {
-    display: block;
-    border:1px solid #27AE60 ;
-    background-color: white;
-    padding: 12px 11px 12px 12px;
-    border-radius: 3px;
-    color: #27AE60;
+  section.banner div.divLadoALado div.lado1 p.autor{
+    font-weight: 400;
     font-size: 14px;
+    line-height: 20.03px;
+    letter-spacing: 0%;
+    color: #27AE60;
+    border: 1px solid #27AE60;
+    width: 100px;
+    height: 41.02777862548828;
+    top: 216.43px;
+    left: 164.23px;
+    border-width: 1px;
+    border-radius: 3px;
+    padding: 10.01px;
+    gap: 10.01px;
+
   }
-  section.banner div.divLadoALado div.lado1 h1 {
-    font-size: 43px;
-    font-weight: bold;
-  }
-  section.banner div.divLadoALado div.lado1 p.texto {
+  section.banner div.divLadoALado div.lado1 p.texto{
     display: block;
-    text-align: left;
-    line-height: 24px;
-    color: #4D4C4C;
+    font-weight: 400;
     font-size: 16px;
+    line-height: 24.03px;
+    letter-spacing: 0%;
+    color: #4D4C4C;
+    width: 477.6625061035156;
+    height: 97;
+    top: 380.66px;
+    left: 164.23px;
+
   }
   section.banner div.divLadoALado div.lado1 button{
-    background-color: #27AE60;
-    padding: 12.02px 32.04px 12.02px 32.04px;
-    color: white;
-    border: none;
-    border-radius: 1px;  
+    width: 243.08889770507812;
+    height: 49.03333282470703;
+    top: 516.85px;
+    left: 164.23px;
+    border-radius: 2px;
+    gap: 10.01px;
+    padding-top: 12.02px;
+    padding-right: 32.04px;
+    padding-bottom: 12.02px;
+    padding-left: 32.04px;
+    font-family: Inter;
+    font-weight: 500;
     font-size: 16.02px;
+    line-height: 24.03px;
+    letter-spacing: 0%;
+    border: none;
+    background-color: #27AE60;
+    color: white;
+
   }
-  section.banner div.divLadoALado div.lado2 p.descricao{
-    font-size: 16px;
+
+
+  section.banner div.divLadoALado div.lado1 h1{
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: 0%;
+    color: #231F2D;
+    width: 512.711181640625;
+    height: 60;
+    top: 288.53px;
+    left: 164.23px;
+
   }
+
+
   /*ALINHAMENTO MENU FRETE*/
 
   section.menuFrete ul{
