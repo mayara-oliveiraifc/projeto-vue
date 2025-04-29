@@ -183,7 +183,7 @@ const produtos = [
             <p><span class="fa-solid fa-envelope"></span>contato@ifbooks.com</p>
           </li>
         </ul>
-        <ul>
+        <ul class="logos">
           <li>
             <img src="../public/img/paypal.png" alt="Logo PayPal">
           </li>
@@ -196,7 +196,7 @@ const produtos = [
         </ul>
       </div>
     </div>
-    <p>&copy; Alguns direitos reservados. IFbooks 2025. </p>
+    <p class="direitos">&copy; Alguns direitos reservados. IFbooks 2025. </p>
   </footer>
 </template>
 
@@ -339,7 +339,6 @@ const produtos = [
     padding-right: 32.04px;
     padding-bottom: 12.02px;
     padding-left: 32.04px;
-    font-family: Inter;
     font-weight: 500;
     font-size: 16.02px;
     line-height: 24.03px;
@@ -408,7 +407,58 @@ const produtos = [
     border-bottom: 1px solid #231F2D;
     padding: 0 3vw 0 0;
   }
+  /*ALINHAMENTO CSS*/
+
+  footer div.separacaoFooter{
+    display: flex;
+    justify-content: space-between;
+    margin: 3vw 10vw;
+  }
+  footer div.separacaoFooter div.footer1{
+    margin-top: 2vw;
+  }
+  footer div.separacaoFooter div.footer1 ul li{
+    margin: 10px;
+  }
+  footer div.separacaoFooter div.footer2{
+    margin-top: 2vw;
+  }
+  footer div.separacaoFooter div.footer2 ul li{
+    margin: 10px;
+  }
+  footer div.separacaoFooter div.footer1 ul {
+    display: flex;
+  }
+  footer div.separacaoFooter div.footer2 ul.logos {
+    display: flex;
+    margin: 2vw 0;
+  }
 
 
+  /*ESTILIZAÇÃO FOOTER*/
+  footer{
+    background-color: #27AE60;
+    color: white;
+  }
+  footer div.separacaoFooter div.footer1 p{
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 24.03px;
+    letter-spacing: 0%;
+  }
 
+  footer div.separacaoFooter div.footer1 ul li a{
+    font-size: 1.5rem;
+    color: white;
+  }
+  footer div.separacaoFooter div.footer2 h3{
+    font-weight: bold;
+    margin-bottom: 20px
+  }
+  footer p.direitos{
+    text-align: center;
+    border-top: 1px solid white;
+    padding: 10px;
+  }
+ 
 </style>
