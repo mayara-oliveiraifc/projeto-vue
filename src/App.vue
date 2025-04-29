@@ -148,6 +148,56 @@ const produtos = [
     </div>
     </section>
   </main>
+  <footer>
+    <div class="separacaoFooter">
+      <div class="footer1">
+        <p>IFbooks</p>
+        <ul>
+          <li>
+            <a href="https://www.facebook.com/">
+              <span class="fa-brands fa-square-facebook"></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/">
+              <span class="fa-brands fa-square-instagram"></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com/">
+              <span class="fa-brands fa-square-twitter"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer2">
+        <h3>Contato</h3>
+        <ul>
+          <li>
+          <p><span class="fa-solid fa-phone"></span> +55 47 40045263</p>
+          </li>
+          <li>
+            <p><span class="fa-solid fa-clock"></span> 8h às 23h - Seg a Sex</p>
+          </li>
+          <li>
+            <p><span class="fa-solid fa-envelope"></span>contato@ifbooks.com</p>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <img src="../public/img/paypal.png" alt="Logo PayPal">
+          </li>
+          <li>
+            <img src="../public/img/mastercar.png" alt="Logo MasterCar">
+          </li>
+          <li>
+            <img src="../public/img/visa.png" alt="Logo Visa">
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p>&copy; Alguns direitos reservados. IFbooks 2025. </p>
+  </footer>
 </template>
 
 <style scoped>
