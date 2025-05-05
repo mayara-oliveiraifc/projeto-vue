@@ -57,6 +57,21 @@ const produtos = [
     desconto: 0,
     total: 288.3,
 };
+document.addEventListener("DOMContentLoaded", function () {
+      const botao = document.querySelector("#botao");
+      const icone = botao.querySelector("i");
+      const comprar = document.querySelector("#comprar");
+
+      botao.addEventListener("click", function () {
+          if (icone.classList.contains("fa-regular")) {
+              icone.classList.remove("fa-regular");
+              icone.classList.add("fa-solid");
+          } else {
+              icone.classList.remove("fa-solid");
+              icone.classList.add("fa-regular");
+          }
+      });
+  });
 
 </script>
 
@@ -147,6 +162,23 @@ const produtos = [
       </ul>
     </div>
     </section>
+    <section class="lancamentos">
+      <h2>Lançamentos</h2>
+      <div class="colunas">
+          <div class="bloco">
+              <img src="#" alt="capa 1">
+              <h3 id="titulo">Chain of Iron: Volume 2</h3>
+              <p id="autor">Cassandra Clare</p>
+              <div>
+                  <p id="preco">R$23.24</p>
+                  <button id="botao">
+                      <i class="fa-regular fa-heart" style="color: #30df4d;"></i>
+                  </button>
+              </div>
+              <button id="comprar">Comprar</button>
+          </div>
+      </div>
+  </section>
   </main>
   <footer>
     <div class="separacaoFooter">
@@ -460,5 +492,4 @@ const produtos = [
     border-top: 1px solid white;
     padding: 10px;
   }
- 
 </style>
