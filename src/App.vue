@@ -59,7 +59,7 @@ const produtos = [
 };
 document.addEventListener("DOMContentLoaded", function () {
       const botao = document.querySelector("#botao");
-      const icone = botao.querySelector("i");
+      const icone = botao.querySelector("span");
       const comprar = document.querySelector("#comprar");
 
       botao.addEventListener("click", function () {
@@ -166,17 +166,103 @@ document.addEventListener("DOMContentLoaded", function () {
       <h2>Lançamentos</h2>
       <div class="colunas">
           <div class="bloco">
-              <img src="#" alt="capa 1">
+              <img src="../public/img/capa1.png" alt="capa 1">
               <h3 id="titulo">Chain of Iron: Volume 2</h3>
-              <p id="autor">Cassandra Clare</p>
+              <p id="autor" class="by">Cassandra Clare</p>
               <div>
-                  <p id="preco">R$23.24</p>
+                  <p id="preco" class="preco">R$23.24</p>
                   <button id="botao">
-                      <i class="fa-regular fa-heart" style="color: #30df4d;"></i>
+                      <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
                   </button>
               </div>
-              <button id="comprar">Comprar</button>
+              <button id="comprar" class="comprar">Comprar</button>
           </div>
+          <div class="bloco">
+            <img src="../public/img/capa2.png" alt="capa 2">
+            <h3 id="titulo">Chain of Thorns</h3>
+            <p id="autor" class="by">Cassandra Clare</p>
+            <div>
+                <p id="preco" class="preco">R$23.24</p>
+                <button id="botao">
+                  <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
+                </button>
+            </div>
+            <button id="comprar" class="comprar">Comprar</button>
+        </div>
+        <div class="bloco">
+          <img src="../public/img/capa3.png" alt="capa 3">
+          <h3 id="titulo">City of Fallen Angels</h3>
+          <p id="autor" class="by">Cassandra Clare</p>
+          <div>
+              <p id="preco" class="preco">R$13.94</p>
+              <button id="botao">
+                <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
+              </button>
+          </div>
+          <button id="comprar" class="comprar">Comprar</button>
+      </div>
+      <div class="bloco">
+        <img src="../public/img/capa4.png" alt="capa 4">
+        <h3 id="titulo">Nona the Ninth</h3>
+        <p id="autor" class="by">Cassandra Clare</p>
+        <div>
+            <p id="preco" class="preco">R$16.84</p>
+            <button id="botao">
+              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
+            </button>
+        </div>
+        <button id="comprar" class="comprar">Comprar</button>
+    </div>
+      </div>
+      <div class="colunas">
+        <div class="bloco">
+          <img src="../public/img/capa5.png" alt="capa 5">
+          <h3 id="titulo">Harlem Shuffle</h3>
+          <p id="autor" class="by">Colson Whitehead</p>
+          <div>
+              <p id="preco" class="preco">R$26.92</p>
+              <button id="botao">
+                <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
+              </button>
+          </div>
+          <button id="comprar" class="comprar">Comprar</button>
+      </div>
+      <div class="bloco">
+        <img src="../public/img/capa6.png" alt="capa 6">
+        <h3 id="titulo">Two Old Women</h3>
+        <p id="autor" class="by">Velma Wallis</p>
+        <div>
+            <p id="preco" class="preco">R$13.95</p>
+            <button id="botao">
+              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
+            </button>
+        </div>
+        <button id="comprar" class="comprar">Comprar</button>
+    </div>
+    <div class="bloco">
+      <img src="../public/img/capa7.png" alt="capa 7">
+      <h3 id="titulo">Carrie Soto Is Back</h3>
+      <p id="autor" class="by">Taylor Jenkins Reid</p>
+      <div>
+          <p id="preco" class="preco">R$26.04</p>
+          <button id="botao">
+            <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
+          </button>
+      </div>
+      <button id="comprar" class="comprar">Comprar</button>
+  </div>
+   <div class="bloco">
+        <img src="../public/img/capa8.png" alt="capa 8">
+        <h3 id="titulo">Book Lovers</h3>
+        <p id="autor" class="by">Emily Henry</p>
+        <div>
+            <p id="preco" class="preco">R$15.81</p>
+            <button id="botao">
+              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
+            </button>
+        </div>
+        <button id="comprar" class="comprar">Comprar</button>
+    </div>
       </div>
   </section>
   </main>
@@ -414,7 +500,9 @@ document.addEventListener("DOMContentLoaded", function () {
     margin: 0 10vw 0 10vw;
     justify-content: space-between;
     border-top:1px solid #27AE60 ;
-    padding: 30px
+    padding: 3vw;
+    border-bottom: 1px solid #27AE60;
+    padding:3vw;
   }
 
   section.menuFrete ul li p{
@@ -434,10 +522,6 @@ document.addEventListener("DOMContentLoaded", function () {
     padding: 0 3vw;
     border-left: 1px solid #937DC2;
 
-  }
-  section.menuFrete ul li p.sublinhado{
-    border-bottom: 1px solid #231F2D;
-    padding: 0 3vw 0 0;
   }
   /*ALINHAMENTO CSS*/
 
@@ -491,5 +575,72 @@ document.addEventListener("DOMContentLoaded", function () {
     text-align: center;
     border-top: 1px solid white;
     padding: 10px;
+  }
+  /*ALINHAMENTO LANÇAMENTOS*/
+  section.lancamentos{
+    margin: 0 10vw;
+  }
+  section.lancamentos div.colunas {
+    display: flex;
+    justify-content: space-between;
+
+  }
+  section.lancamentos h2{
+  
+  }
+  /*ESTILIZAÇÃO LANÇAMENTOS*/
+  section.lancamentos h2 {
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 49px;
+    letter-spacing: 0%;
+    color: #231F2D;
+    margin: 1vw 0 2vw 4vw;
+  }
+  section.lancamentos div.colunas div.bloco h3{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32.04px;
+    letter-spacing: 0%;
+    color: #382C2C;
+  }
+  section.lancamentos div.colunas div.bloco p.by{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: #4F4C57;
+    width: 125;
+    height: 24;
+    top: 1518px;
+    left: 124px;
+    margin: 7px 0;
+  }
+  section.lancamentos div.colunas div.bloco div {
+    display: flex;
+    justify-content: space-between;
+  }
+  section.lancamentos div.colunas div.bloco div button{
+    border: none;
+    background-color: white;
+    font-size: 1.5rem;
+  }
+  section.lancamentos div.colunas div.bloco button.comprar{
+    border: none;
+    padding: 14px 100px;
+    background-color: #27AE60;
+    border-radius: 2px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    margin-top: 1vw;
+    margin-bottom: 4vw;
+  }
+  section.lancamentos div.colunas div.bloco p.preco{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #382C2C;
   }
 </style>
