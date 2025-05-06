@@ -260,6 +260,13 @@
         </div>
       </div>
     </section>
+    <section class="listaCompra">
+      <h2>Carrinho</h2>
+      <div>
+
+      </div>
+      <button><a href="#">Voltar para loja</a></button>
+    </section>
   </main>
   <footer>
     <div class="separacaoFooter">
@@ -677,5 +684,31 @@
     color: #382C2C;
   }
   /*ALINHAMENTO CARRINHO*/
-  
+  section.listaCompra{
+    margin: 3vw 10vw;
+  }
+    section.listaCompra h2{
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 49px;
+      letter-spacing: 0%;
+      color: #27AE60;
+
+    }
+    section.listaCompra button a{
+      text-decoration: none;
+      color: #000000;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0%;
+      width: 221;
+    }
+    section.listaCompra button{
+    background-color: white;
+    border: none;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 15px 20px;
+    }
 </style>
