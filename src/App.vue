@@ -311,128 +311,6 @@
     </div>
     <p class="direitos">&copy; Alguns direitos reservados. IFbooks 2025. </p>
   </footer>
-  <header>
-    <nav>
-      <div class="IFbooks">
-        <ul>
-          <li class="espacoLogo">
-            <a href="App.vue">IFbooks</a>
-          </li>
-          <li>
-            <p class="espaco">Apreço a <br> leitura</p>
-          </li>
-        </ul>
-      </div>
-      <div class="barraDePesquisa">
-        <input type="text" id="txtBusca" placeholder="Buscar..." />
-        <img src="#" id="btnBusca" alt="Buscar" />
-      </div>
-      <div class="menuTopo">
-        <ul>
-          <li>
-            <a href="App.vue">Termos</a>
-          </li>
-          <li>
-            <a href="App.vue">Equpe</a>
-          </li>
-          <li>
-            <a href="App.vue">Envio</a>
-          </li>
-          <li>
-            <a href="App.vue">Devoluções</a>
-          </li>
-        </ul>
-      </div>
-      <div class="icons">
-        <ul>
-          <li>
-            <a href="App.vue">
-              <span class="fa-solid fa-cart-shopping"></span>
-            </a>
-          </li>
-          <li>
-            <a href="App.vue">
-              <span class="fa-solid fa-heart"></span>
-            </a>
-          </li>
-          <li>
-            <a href="App.vue">
-              <span class="fa-solid fa-user-large"></span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <main>
-
-    <section>
-      <h2>Carrinho</h2>
-      <div>
-        <ul>
-          <li>
-            <h4>Título</h4>
-          </li>
-          <li>
-            <h4>Quantidade</h4>
-          </li>
-          <li>
-            <h4>Subtotal</h4>
-          </li>
-        </ul>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="separacaoFooter">
-      <div class="footer1">
-        <p>IFbooks</p>
-        <ul>
-          <li>
-            <a href="https://www.facebook.com/">
-              <span class="fa-brands fa-square-facebook"></span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/">
-              <span class="fa-brands fa-square-instagram"></span>
-            </a>
-          </li>
-          <li>
-            <a href="https://x.com/">
-              <span class="fa-brands fa-square-twitter"></span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer2">
-        <h3>Contato</h3>
-        <ul>
-          <li>
-            <p><span class="fa-solid fa-phone"></span> +55 47 40045263</p>
-          </li>
-          <li>
-            <p><span class="fa-solid fa-clock"></span> 8h às 23h - Seg a Sex</p>
-          </li>
-          <li>
-            <p><span class="fa-solid fa-envelope"></span>contato@ifbooks.com</p>
-          </li>
-        </ul>
-        <ul class="logos">
-          <li>
-            <img src="../public/img/paypal.png" alt="Logo PayPal">
-          </li>
-          <li>
-            <img src="../public/img/mastercar.png" alt="Logo MasterCar">
-          </li>
-          <li>
-            <img src="../public/img/visa.png" alt="Logo Visa">
-          </li>
-        </ul>
-      </div>
-    </div>
-    <p class="direitos">&copy; Alguns direitos reservados. IFbooks 2025. </p>
-  </footer>
 </template>
 
 <style scoped>
@@ -798,4 +676,6 @@
     font-weight: bold;
     color: #382C2C;
   }
+  /*ALINHAMENTO CARRINHO*/
+  
 </style>
