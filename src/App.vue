@@ -1,64 +1,117 @@
 <script setup>
-  const produtos = [
+  import { ref, computed, reactive } from 'vue';
+  
+  const lancamentos = ref([
     {
       id: 1,
-      titulo: 'Livro 1',
-      resenha: 'Descrição breve 1',
-      preco: 49.9,
-      capa: 'https://placehold.co/600x400.png',
-
+      titulo: 'Chain of Iron: Volume 2',
+      autor: 'Cassandra Clare',
+      preco: 23.24,
+      capa: '/img/capa1.png',
+      favorito: false,
     },
     {
       id: 2,
-      titulo: 'Livro 2',
-      resenha: 'Descrição breve 2',
-      preco: 99.9,
-      capa: 'https://placehold.co/600x400.png',
+      titulo: 'Chain of Thorns',
+      autor: 'Cassandra Clare',
+      preco: 23.24,
+      capa: '/img/capa2.png',
+      favorito: false,
     },
     {
       id: 3,
-      titulo: 'Livro 3',
-      resenha: 'Descrição breve 3',
-      preco: 9.9,
-      capa: 'https://placehold.co/600x400.png',
+      titulo: 'City of Fallen Angels',
+      autor: 'Cassandra Clare',
+      preco: 13.94,
+      capa: '/img/capa3.png',
+      favorito: false,
     },
     {
       id: 4,
-      titulo: 'Livro 4',
-      resenha: 'Descrição breve 4',
-      preco: 199.9,
-      capa: 'https://placehold.co/600x400.png',
+      titulo: 'Nona the Ninth',
+      autor: 'Cassandra Clare',
+      preco: 16.84,
+      capa: '/img/capa4.png',
+      favorito: false,
     },
     {
       id: 5,
-      titulo: 'Livro 5',
-      resenha: 'Descrição breve 5',
-      preco: 29.9,
-      capa: 'https://placehold.co/600x400.png',
-    }
-  ];
-  const carrinho = {
-    items: [
-      {
-        id: 1,
-        nome: 'Livro 1',
-        preco: 49.9,
-        quantidade: 1,
-        valorTotal: 49.9,
-      },
-      {
-        id: 2,
-        nome: 'Livro 2',
-        preco: 99.9,
-        quantidade: 2,
-        valorTotal: 199.8,
-      },
-    ],
+      titulo: 'Harlem Shuffle',
+      autor: 'Colson Whitehead',
+      preco: 26.92,
+      capa: '/img/capa5.png',  
+      favorito: false,
+    },
+    {
+      id: 6,
+      titulo: 'Two Old Women',
+      autor: 'Velma Wallis',
+      preco: 13.95,
+      capa: '/img/capa6.png',
+      favorito: false,
+    },
+    {
+      id: 7,
+      titulo: 'Carrie Soto Is Back',
+      autor: 'Taylor Jenkins Reid',
+      preco: 26.04,
+      capa: '/img/capa7.png',
+      favorito: false,
+    },
+    {
+      id: 8,
+      titulo: 'Book Lovers',
+      autor: 'Emily Henry',
+      preco: 15.81,
+      capa: '/img/capa8.png',
+      favorito: false,
+    },
+  ]);
+  
+  function favoritarLivro(livro) {
+  livro.favorito = !livro.favorito;
+}
+
+  const carrinho = reactive({
+    items: [],
     frete: 0,
     desconto: 0,
-    total: 288.3,
-  };
-</script>
+    total: 0,
+  });
+  
+  function adicionarAoCarrinho(produto) {
+    const itemExistente = carrinho.items.find(item => item.id === produto.id);
+  
+    if (itemExistente) {
+      itemExistente.quantidade++;
+      itemExistente.valorTotal = itemExistente.quantidade * itemExistente.preco;
+    } else {
+      carrinho.items.push({
+        id: produto.id,
+        nome: produto.titulo,
+        preco: produto.preco,
+        quantidade: 1,
+        valorTotal: produto.preco,
+      });
+    }
+  
+    atualizarTotalCarrinho();
+  }
+  
+  function atualizarTotalCarrinho() {
+    const subtotal = carrinho.items.reduce((total, item) => total + item.valorTotal, 0);
+    carrinho.total = subtotal + carrinho.frete - carrinho.desconto;
+  }
+  function alterarQuantidade(item, delta) {
+  item.quantidade += delta;
+  if (item.quantidade < 1) {
+    carrinho.items = carrinho.items.filter(i => i.id !== item.id);
+  } else {
+    item.valorTotal = item.quantidade * item.preco;
+  }
+  atualizarTotalCarrinho();
+}
+  </script>
 
 <template>
   <header>
@@ -74,7 +127,7 @@
         </ul>
       </div>
       <div class="barraDePesquisa">
-        <input type="text" id="txtBusca" placeholder="Buscar..." />
+        <input type="text" id="txtBusca" placeholder="Pesquisar" />
         <img src="#" id="btnBusca" alt="Buscar" />
       </div>
       <div class="menuTopo">
@@ -149,124 +202,75 @@
         </ul>
       </div>
     </section>
+
     <section class="lancamentos">
-      <h2>Lançamentos</h2>
+      <h2 id="lancamento">Lançamentos</h2>
       <div class="colunas">
-        <div class="bloco">
-          <img src="../public/img/capa1.png" alt="capa 1">
-          <h3 id="titulo">Chain of Iron: Volume 2</h3>
-          <p id="autor" class="by">Cassandra Clare</p>
-          <div>
-            <p id="preco" class="preco">R$23.24</p>
-            <button id="botao" class="botao">
-              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
-            </button>
+        <div class="bloco" v-for="livro in lancamentos" :key="livro.id">
+          <img :src="livro.capa" :alt="livro.titulo" />
+          <h3>{{ livro.titulo }}</h3>
+          <p class="by">{{ livro.autor }}</p>
+          <div class="livro-fav">
+            <p class="preco">R$ {{ livro.preco.toFixed(2) }}</p>
+            <span :class="livro.favorito ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" :style="{ color: livro.favorito ? '#27AE60' : '#ccc', cursor: 'pointer' }" @click="favoritarLivro(livro)"></span>
           </div>
-          <button id="comprar" class="comprar"><span class="fa-solid fa-cart-shopping" style="color: #ffffff;"></span>
-            Comprar</button>
-        </div>
-        <div class="bloco">
-          <img src="../public/img/capa2.png" alt="capa 2">
-          <h3 id="titulo">Chain of Thorns</h3>
-          <p id="autor" class="by">Cassandra Clare</p>
-          <div>
-            <p id="preco" class="preco">R$23.24</p>
-            <button id="botao" class="botao">
-              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
-            </button>
-          </div>
-          <button id="comprar" class="comprar"><span class="fa-solid fa-cart-shopping" style="color: #ffffff;"></span>
-            Comprar</button>
-        </div>
-        <div class="bloco">
-          <img src="../public/img/capa3.png" alt="capa 3">
-          <h3 id="titulo">City of Fallen Angels</h3>
-          <p id="autor" class="by">Cassandra Clare</p>
-          <div>
-            <p id="preco" class="preco">R$13.94</p>
-            <button id="botao">
-              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
-            </button>
-          </div>
-          <button id="comprar" class="comprar"><span class="fa-solid fa-cart-shopping" style="color: #ffffff;"></span>
-            Comprar</button>
-        </div>
-        <div class="bloco">
-          <img src="../public/img/capa4.png" alt="capa 4">
-          <h3 id="titulo">Nona the Ninth</h3>
-          <p id="autor" class="by">Cassandra Clare</p>
-          <div>
-            <p id="preco" class="preco">R$16.84</p>
-            <button id="botao">
-              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
-            </button>
-          </div>
-          <button id="comprar" class="comprar"><span class="fa-solid fa-cart-shopping" style="color: #ffffff;"></span>
-            Comprar</button>
-        </div>
-      </div>
-      <div class="colunas">
-        <div class="bloco">
-          <img src="../public/img/capa5.png" alt="capa 5">
-          <h3 id="titulo">Harlem Shuffle</h3>
-          <p id="autor" class="by">Colson Whitehead</p>
-          <div>
-            <p id="preco" class="preco">R$26.92</p>
-            <button id="botao">
-              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
-            </button>
-          </div>
-          <button id="comprar" class="comprar"><span class="fa-solid fa-cart-shopping" style="color: #ffffff;"></span>
-            Comprar</button>
-        </div>
-        <div class="bloco">
-          <img src="../public/img/capa6.png" alt="capa 6">
-          <h3 id="titulo">Two Old Women</h3>
-          <p id="autor" class="by">Velma Wallis</p>
-          <div>
-            <p id="preco" class="preco">R$13.95</p>
-            <button id="botao">
-              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
-            </button>
-          </div>
-          <button id="comprar" class="comprar"><span class="fa-solid fa-cart-shopping" style="color: #ffffff;"></span>
-            Comprar</button>
-        </div>
-        <div class="bloco">
-          <img src="../public/img/capa7.png" alt="capa 7">
-          <h3 id="titulo">Carrie Soto Is Back</h3>
-          <p id="autor" class="by">Taylor Jenkins Reid</p>
-          <div>
-            <p id="preco" class="preco">R$26.04</p>
-            <button id="botao">
-              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
-            </button>
-          </div>
-          <button id="comprar" class="comprar"><span class="fa-solid fa-cart-shopping" style="color: #ffffff;"></span>
-            Comprar</button>
-        </div>
-        <div class="bloco">
-          <img src="../public/img/capa8.png" alt="capa 8">
-          <h3 id="titulo">Book Lovers</h3>
-          <p id="autor" class="by">Emily Henry</p>
-          <div>
-            <p id="preco" class="preco">R$15.81</p>
-            <button id="botao">
-              <span class="fa-regular fa-heart" style="color: #27AE60;"></span>
-            </button>
-          </div>
-          <button id="comprar" class="comprar"><span class="fa-solid fa-cart-shopping" style="color: #ffffff;"></span>
-            Comprar</button>
+          <button class="comprar" @click="adicionarAoCarrinho(livro)">
+            <span class="fa-solid fa-cart-shopping" style="color: #fff;"></span> Comprar
+          </button>
         </div>
       </div>
     </section>
     <section class="listaCompra">
       <h2>Carrinho</h2>
-      <div>
-
+      <div v-if="carrinho.items.length" class="tabela-carrinho">
+        <div class="linha-cabecalho">
+          <span class="coluna titulo">Título</span>
+          <span class="coluna quantidade">Quantidade</span>
+          <span class="coluna subtotal">Subtotal</span>
+        </div>
+        <div class="linha-item" v-for="item in carrinho.items" :key="item.id">
+          <div class="coluna titulo">
+            <p class="nome">{{ item.nome }}</p>
+            <p class="preco-unidade">R$ {{ item.preco.toFixed(2) }}</p>
+          </div>
+          <div class="coluna quantidade">
+            <button @click="alterarQuantidade(item, -1)">-</button>
+            <span>{{ item.quantidade }}</span>
+            <button @click="alterarQuantidade(item, 1)">+</button>
+          </div>
+          <div class="coluna subtotal">
+            <span>R$ {{ item.valorTotal.toFixed(2) }}</span>
+          </div>
+        </div>
       </div>
-      <button><a href="#">Voltar para loja</a></button>
+      <p v-else>Seu carrinho está vazio.</p>
     </section>
+    <section class="menuTotal">
+    
+      <div class="integrar">
+        <button><a href="#lancamento">Voltar para loja</a></button>
+        <div class="cupom">
+          <input type="text" id="txtBusca" placeholder="Código do cupom" />
+          <img src="#" id="btnBusca" alt="" />
+          <button class="butaoCupom">Inserir Cupom</button>
+      </div>
+      </div>
+      <div class="bordaM">
+        <h3>Total da Compra:</h3>
+        <div class="total">
+          <p>Produtos:</p> <span>R$ {{ carrinho.total.toFixed(2) }}</span>
+        </div>
+        <div class="totalFrete">
+          <p>Frete:</p> <p>Grátis</p>
+        </div>
+        <div class="total">
+          <p>Total:</p> <span>R$ {{ carrinho.total.toFixed(2) }}</span>
+        </div>
+        <div class="total">
+          <button class="pagamento">Ir para o pagamento</button>
+        </div>
+      </div>
+    </section> 
   </main>
   <footer>
     <div class="separacaoFooter">
@@ -319,7 +323,6 @@
     <p class="direitos">&copy; Alguns direitos reservados. IFbooks 2025. </p>
   </footer>
 </template>
-
 <style scoped>
   /*ALINHAMENTO MENU*/
   header {
@@ -614,14 +617,6 @@
     margin: 0 10vw;
   }
 
-  section.lancamentos div.colunas {
-    display: flex;
-    justify-content: space-between;
-
-  }
-
-  section.lancamentos h2 {}
-
   /*ESTILIZAÇÃO LANÇAMENTOS*/
   section.lancamentos h2 {
     font-weight: 600;
@@ -634,7 +629,7 @@
 
   section.lancamentos div.colunas div.bloco h3 {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 32.04px;
     letter-spacing: 0%;
     color: #382C2C;
@@ -653,15 +648,10 @@
     margin: 7px 0;
   }
 
-  section.lancamentos div.colunas div.bloco div {
+  section.lancamentos div.colunas div.bloco div.livro-fav{
     display: flex;
     justify-content: space-between;
-  }
 
-  section.lancamentos div.colunas div.bloco div button {
-    border: none;
-    background-color: white;
-    font-size: 1.5rem;
   }
 
   section.lancamentos div.colunas div.bloco button.comprar {
@@ -678,11 +668,88 @@
     margin-bottom: 4vw;
   }
 
-  section.lancamentos div.colunas div.bloco p.preco {
+  section.lancamentos div.colunas div.bloco p.preco{
     font-size: 1.2rem;
     font-weight: bold;
     color: #382C2C;
+    margin: 0 3vw 0 0;
   }
+  .lancamentos {
+  padding: 20px;
+}
+
+.lancamentos h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.colunas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.bloco {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: calc(25% - 20px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.bloco img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.bloco h3 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.bloco p {
+  margin: 0 0 5px;
+}
+
+.livro\.fav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.preco {
+  font-weight: bold;
+  color: #27AE60;
+}
+
+.comprar {
+  background-color: #27AE60;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.comprar:hover {
+  background-color: #219150;
+}
+
   /*ALINHAMENTO CARRINHO*/
   section.listaCompra{
     margin: 3vw 10vw;
@@ -695,7 +762,98 @@
       color: #27AE60;
 
     }
-    section.listaCompra button a{
+
+    /*ESTILO CARRINHO*/
+    .tabela-carrinho {
+  width: 100%;
+  border-top: 2px solid #007aff;
+}
+
+.linha-cabecalho,
+.linha-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.coluna {
+  flex: 1;
+  text-align: center;
+}
+
+.coluna.titulo {
+  text-align: left;
+  flex: 2;
+}
+
+.coluna.quantidade button {
+  margin: 0 0.5rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.preco-unidade {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/*carrinho*/
+section.menuTotal{
+  margin: 0 10vw;
+  display: flex;
+  justify-content: space-between;
+}
+section.menuTotal div.bordaM div.total{
+  display: flex;
+  justify-content: space-between;
+}
+section.menuTotal div.bordaM div.totalFrete{
+  display: flex;
+  justify-content: space-between;
+}
+section.menuTotal div.bordaM{
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 1vw;
+}
+section.menuTotal div.bordaM div.total p{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  margin: 3px 10px;
+}
+section.menuTotal div.bordaM div.total span{
+  margin: 3px 10px;
+}
+section.menuTotal div.bordaM h3{
+font-weight: 500;
+font-size: 20px;
+line-height: 28px;
+letter-spacing: 0%;
+margin: 20px 10px;
+}
+section.menuTotal div.bordaM div.totalFrete{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  margin: 3px 10px;
+  border-bottom:1px solid #000000;
+  padding: 5px 0;
+  border-top:1px solid #000000;
+  padding: 5px 0;
+}
+section.menuTotal div.integrar div.cupom button.butaoCupom{
+    border: none;
+    background-color: #27AE60;
+    border-radius: 2px;
+    color: white;
+    padding: 10px 16px;
+    margin-left: 10px;
+} 
+  section.menuTotal div.integrar button a{
       text-decoration: none;
       color: #000000;
       font-weight: 500;
@@ -704,11 +862,23 @@
       letter-spacing: 0%;
       width: 221;
     }
-    section.listaCompra button{
+
+  section.menuTotal div.integrar button{
     background-color: white;
     border: none;
     border: 1px solid #000000;
     border-radius: 4px;
     padding: 15px 20px;
-    }
+    margin: 3vw 0;
+}
+  section.menuTotal div.bordaM div.total button.pagamento{
+    border: none;
+    background-color: #27AE60;
+    border-radius: 2px;
+    color: white;
+    padding: 10px 16px;
+    margin-left: 10px;
+    font-size: 16px;
+    margin-top: 2vw ;
+}
 </style>
