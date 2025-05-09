@@ -128,7 +128,7 @@
       </div>
       <div class="barraDePesquisa">
         <input type="text" id="txtBusca" placeholder="Pesquisar" />
-        <img src="#" id="btnBusca" alt="Buscar" />
+        <img src="../public/img/lupa.png" id="btnBusca" alt="Buscar" />
       </div>
       <div class="menuTopo">
         <ul>
@@ -149,11 +149,11 @@
       <div class="icons">
         <ul>
           <li>
-            <a href="App.vue">
+            <a href="#compra">
               <span class="fa-solid fa-cart-shopping"></span>
             </a>
           </li>
-          <li>
+          <li class="coracaoBarra">
             <a href="App.vue">
               <span class="fa-solid fa-heart"></span>
             </a>
@@ -221,7 +221,7 @@
       </div>
     </section>
     <section class="listaCompra">
-      <h2>Carrinho</h2>
+      <h2 id="compra">Carrinho</h2>
       <div v-if="carrinho.items.length" class="tabela-carrinho">
         <div class="linha-cabecalho">
           <span class="coluna titulo">Título</span>
@@ -250,7 +250,7 @@
       <div class="integrar">
         <button><a href="#lancamento">Voltar para loja</a></button>
         <div class="cupom">
-          <input type="text" id="txtBusca" placeholder="Código do cupom" />
+          <input class="diminuirBarra" type="text" id="txtBusca" placeholder="Código do cupom" />
           <img src="#" id="btnBusca" alt="" />
           <button class="butaoCupom">Inserir Cupom</button>
       </div>
@@ -400,7 +400,12 @@
   header nav {
     border-bottom: 1.5px solid #27AE60;
   }
-
+  header nav div.icons ul li.coracaoBarra{
+    border-left: 1px solid #27AE60;
+    padding-left: 14px;
+    border-right: 1px solid #27AE60;
+    padding-right: 14px;
+  }
 
   header nav div.IFbooks ul li p.espaco {
     border-left: 1.5px solid #27AE60;
@@ -765,9 +770,8 @@
 
     /*ESTILO CARRINHO*/
     .tabela-carrinho {
-  width: 100%;
-  border-top: 2px solid #007aff;
-}
+      width: 100%;
+  }
 
 .linha-cabecalho,
 .linha-item {
@@ -880,5 +884,36 @@ section.menuTotal div.integrar div.cupom button.butaoCupom{
     margin-left: 10px;
     font-size: 16px;
     margin-top: 2vw ;
+}
+.barraDePesquisa {
+  position: relative;
+  width: 23%;
+  margin: 20px 10px 10px 6vw;
+}
+
+#txtBusca {
+  width: 100%;
+  padding-left: 30px; 
+  padding: 8px 10px;
+  font-size: 16px;
+  background-color: #F1F1F1;
+  border: none;
+}
+
+#btnBusca {
+  position: absolute;
+  right: 4px; 
+  top: 40%;
+  transform: translateY(-50%); 
+  width: 20px; 
+  height: 20px;
+  pointer-events: none; 
+}
+
+section.menuTotal div.integrar div.cupom{
+  display: flex;
+  width: 70%;
+  height: 10%;
+
 }
 </style>
